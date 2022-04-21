@@ -2,24 +2,18 @@ use anyhow::{Ok, Result};
 use core_loader::Core;
 use log::error;
 
-const HELP_NO_CORE: &str = "\
+const HELP: &str = "\
 retrovert-console
 USAGE:
   retrovert-console [ARGS]
-  --core        PATH    Override path to core library
-";
-
-const HELP_CORE: &str = "\
-retrovert-console
-USAGE:
-  retrovert-console [ARGS]
-  --core        PATH    Override path to core library
-";
+  --core        PATH    Override path to core library";
 
 fn main() -> Result<()> {
     Core::init_logging()?;
 
     let mut pargs = pico_args::Arguments::from_env();
+
+    dbg!(&pargs);
 
     // Help has a higher priority and should be handled separately.
     //if pargs.contains(["-h", "--help"]) {
@@ -42,14 +36,14 @@ fn main() -> Result<()> {
         Result::Ok(c) => c,
         Err(e) => {
             error!("Unable to create core {}", e);
-            print!("{}", HELP_NO_CORE);
+            print!("{}", HELP);
             return Err(e);
         }
     };
 
     if pargs.contains(["-h", "--help"]) {
-        println!("{}", HELP_CORE);
-        (core.core_show_args);
+        println!("{}", HELP);
+        (core.core_show_args)();
         return Ok(());
     }
 
