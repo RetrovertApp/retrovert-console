@@ -63,11 +63,9 @@ fn main() -> Result<()> {
 
     pancurses::endwin();
      */
-    
-     if let Some(play_url) = pargs.opt_value_from_str::<_, String>("--play")? {
+
+     while let Some(play_url) = pargs.opt_value_from_str::<_, String>("--play")? {
         let name_c = CFixedString::from_str(&play_url);
-        //let name = b"ftp://ftp.modland.com/pub/modules/Protracker/Virgill/eurobeat.mod\0";
-        //let name = b"/home/emoon/Music/ftp.modland.com/pub/modules/Protracker/Lizardking/elimination.mod\0";
         (core.core_load_url)(core_instance, name_c.as_ptr() as _);
      }
 
