@@ -1,7 +1,7 @@
 use anyhow::{Ok, Result};
 use core_loader::Core;
 use log::error;
-use pancurses::{Input};
+//use pancurses::{Input};
 use cfixed_string::CFixedString;
 
 const HELP: &str = "\
@@ -75,7 +75,6 @@ fn main() -> Result<()> {
         std::thread::sleep(std::time::Duration::from_millis(16));
     }
 
-    (core.core_destroy_func)(core_instance, false);
-
-    Ok(())
+    //(core.core_destroy_func)(core_instance, false);
+    //Ok(())
 }
