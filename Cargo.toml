@@ -10,5 +10,5 @@ pancurses = "0.17"
 anyhow = "1.0"
 log = "0.4"
 core_loader = { path = "../core-loader" }
-pico-args = "0.4"
+pico-args = "0.5"
 cfixed-string = "1.0"
